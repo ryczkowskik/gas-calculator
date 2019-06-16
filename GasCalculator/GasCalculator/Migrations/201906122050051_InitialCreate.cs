@@ -3,8 +3,14 @@ namespace GasCalculator.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
+    /// <summary>
+    /// Migracja tworz¹ca tabelê Gases w bazie danych
+    /// </summary>
     public partial class InitialCreate : DbMigration
     {
+        /// <summary>
+        /// Metoda wykonuj¹ca migracjê
+        /// </summary>
         public override void Up()
         {
             CreateTable(
@@ -23,6 +29,9 @@ namespace GasCalculator.Migrations
             
         }
         
+        /// <summary>
+        /// Metoda wycofuj¹ca migracjê
+        /// </summary>
         public override void Down()
         {
             DropTable("dbo.Gases");

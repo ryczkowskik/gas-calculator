@@ -9,8 +9,14 @@ using System.Windows.Input;
 
 namespace GasCalculator.ViewModels
 {
+    /// <summary>
+    /// ViewModel dla widoku głównego
+    /// </summary>
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public MainWindowViewModel()
         {
             using (var db = new DataContext())
@@ -21,9 +27,16 @@ namespace GasCalculator.ViewModels
             CalculateValueCommand = new DelegateCommand(OnCalculateValue);
         }
 
+        /// <summary>
+        /// Lista wszystkich gazów dla który możemy obliczyć wartość
+        /// </summary>
         public List<Gas> GasList { get; private set; }
 
         private Gas _selectedGas;
+
+        /// <summary>
+        /// Wybrany gaz z listy GasList
+        /// </summary>
         public Gas SelectedGas
         {
             get
@@ -38,6 +51,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _value;
+
+        /// <summary>
+        /// Wartość pomiaru
+        /// </summary>
         public decimal Value
         {
             get
@@ -52,6 +69,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _result;
+
+        /// <summary>
+        /// Wynik mnożenia wartości pomiaru i przelicznika dla wybranego gazu
+        /// </summary>
         public decimal Result
         {
             get
@@ -66,6 +87,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _factor;
+
+        /// <summary>
+        /// Przelicznik dla wybranego gazu
+        /// </summary>
         public decimal Factor
         {
             get
@@ -80,6 +105,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _dgw;
+
+        /// <summary>
+        /// DGW wybranego gazu
+        /// </summary>
         public decimal DGW
         {
             get
@@ -94,6 +123,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _ggw;
+
+        /// <summary>
+        /// GGW wybranego gazu
+        /// </summary>
         public decimal GGW
         {
             get
@@ -108,6 +141,10 @@ namespace GasCalculator.ViewModels
         }
 
         private decimal _consistency;
+
+        /// <summary>
+        /// Gęstość wybranego gazu
+        /// </summary>
         public decimal Consistency
         {
             get
@@ -122,6 +159,10 @@ namespace GasCalculator.ViewModels
         }
 
         private string _description;
+
+        /// <summary>
+        /// Charakterystyka wybranego gazu
+        /// </summary>
         public string Description
         {
             get
@@ -134,9 +175,15 @@ namespace GasCalculator.ViewModels
                 RaisePropertyChanged();
             }
         }
-        
+
+        /// <summary>
+        /// Polecenie obliczające wartość gazu oraz ustawiające odpowiednio właściwości
+        /// </summary>
         public ICommand CalculateValueCommand { get; private set; }
-        
+
+        /// <summary>
+        /// Zdarzenie mające miejsce podczas zmiany wartości którejś z właściwości
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
         {

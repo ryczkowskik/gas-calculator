@@ -9,10 +9,14 @@ using System.Windows;
 namespace GasCalculator
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Logika dla App.xaml
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Metoda uruchmiająca się w momencie startu aplikacji
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
