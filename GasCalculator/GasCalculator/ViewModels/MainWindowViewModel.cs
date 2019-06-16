@@ -135,6 +135,8 @@ namespace GasCalculator.ViewModels
             }
         }
         
+        public ICommand CalculateValueCommand { get; private set; }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
         {
@@ -143,8 +145,6 @@ namespace GasCalculator.ViewModels
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public ICommand CalculateValueCommand { get; private set; }
 
         private void OnCalculateValue(object param)
         {

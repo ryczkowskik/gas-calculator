@@ -2,7 +2,7 @@ namespace GasCalculator.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GasCalculator.Storage.DataContext>
+    public sealed class Configuration : DbMigrationsConfiguration<GasCalculator.Storage.DataContext>
     {
         public Configuration()
         {
