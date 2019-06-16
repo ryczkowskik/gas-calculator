@@ -17,7 +17,7 @@ namespace GasCalculator.ViewModels
             {
                 GasList = db.Gases.ToList();
             }
-
+            SelectedGas = GasList.FirstOrDefault();
             CalculateValueCommand = new DelegateCommand(OnCalculateValue);
         }
 
@@ -61,6 +61,20 @@ namespace GasCalculator.ViewModels
             set
             {
                 _result = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private decimal _factor;
+        public decimal Factor
+        {
+            get
+            {
+                return _factor;
+            }
+            set
+            {
+                _factor = value;
                 RaisePropertyChanged();
             }
         }
@@ -134,6 +148,7 @@ namespace GasCalculator.ViewModels
 
         private void OnCalculateValue(object param)
         {
+            Factor = _selectedGas.Factor;
             Result = _selectedGas.Factor * _value;
             DGW = _selectedGas.DGW;
             GGW = _selectedGas.GGW;
