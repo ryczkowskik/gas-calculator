@@ -181,18 +181,25 @@ namespace GasCalculator.ViewModels
         /// </summary>
         public ICommand CalculateValueCommand { get; private set; }
 
+      
         /// <summary>
         /// Zdarzenie mające miejsce podczas zmiany wartości którejś z właściwości
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged([CallerMemberName]string propertyName = null)
         {
+            // Sprawdzenie, czy handler PropertyChanged posiada przypisaną wartość
             if (PropertyChanged != null)
             {
+                // Wywołanie handlera PropertyChanged, przekazując nazwę zmiennej,
+                // która wywołała to zdarzenie
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
+        /// <summary>
+        /// Obliczenie wartości gazu, po zmianie jego parametru
+        /// </summary>
         private void OnCalculateValue(object param)
         {
             Factor = _selectedGas.Factor;
